@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Company Billing System</title>
+  <style>
+    body { font-family: Arial; background: #f8f9fa; padding: 20px; }
+    h1 { color: #333; }
+    form { background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 0 5px #ccc; }
+    input, button { padding: 8px; margin: 5px; }
+    table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background: #e9ecef; }
+  </style>
+</head>
+<body>
+  <h1>💰 Company Billing Portal</h1>
+  <form action="/add" method="POST">
+    <input type="text" name="name" placeholder="Customer Name" required>
+    <input type="text" name="utr" placeholder="UTR Number" required>
+    <input type="number" name="amount" step="0.01" placeholder="Amount Paid" required>
+    <button type="submit">Add Payment</button>
+  </form>
+
+  <h2>📋 Payment Records</h2>
+  <table>
+    <tr>
+      <th>ID</th><th>Name</th><th>UTR</th><th>Amount</th><th>Date & Time</th>
+    </tr>
+    {% for row in rows %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>₹{{ row[3] }}</td>
+      <td>{{ row[4] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
